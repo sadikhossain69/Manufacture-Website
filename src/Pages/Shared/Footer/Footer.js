@@ -22,7 +22,7 @@ const Footer = () => {
                 </div>
             </div>
             <div>
-                <p>Copyright © {date} - All right reserved by ACME Industries Ltd</p>
+                <p>Copyright © {date} - All right reserved by Manufacture Website Ltd</p>
             </div>
         </footer>
     );
