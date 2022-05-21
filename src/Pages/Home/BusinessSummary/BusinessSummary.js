@@ -7,7 +7,7 @@ import { VscFeedback } from 'react-icons/vsc'
 const BusinessSummary = () => {
     return (
         <section className='my-3 space-y-3'>
-            <h2 className="text-center text-3xl font-bold no-underline md:underline decoration-accent text-accent underline-offset-4">Our Business Summary</h2>
+            <h2 className="text-center text-3xl font-bold no-underline md:underline decoration-accent text-accent underline-offset-4">Millions Of Business Trust Us</h2>
             <div className='text-center'>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-7'>
                     <div className='space-y-4 text-center'>
