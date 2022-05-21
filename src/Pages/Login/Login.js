@@ -27,7 +27,7 @@ const Login = () => {
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">Login</button>
-                            </div>
+                            </div> 
                         </div>
                     </div>
                 </div>
