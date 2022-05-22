@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Home from './Pages/Home/Home/Home';
+import ToolDetails from './Pages/Home/ToolDetails/ToolDetails';
 import Login from './Pages/Login/Login';
 import Footer from './Pages/Shared/Footer/Footer';
 import Navbar from './Pages/Shared/Navbar/Navbar';
@@ -17,6 +18,7 @@ function App() {
         <Route path='/' element={<Home/>} />
         <Route path='/home' element={<Home/>} />
         <Route path='/dashboard' element={<Dashboard/>} />
+        <Route path='/tools/:id' element={<ToolDetails/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/signUp' element={<SignUp/>} />
         <Route path='*' element={<PageNotFound/>} />
