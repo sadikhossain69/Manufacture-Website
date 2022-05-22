@@ -1,0 +1,50 @@
+[
+    {
+        "toolName": "Hammer",
+        "image": "https://i.ibb.co/8K4ZVjh/hammer.jpg",
+        "description": "In going where you have to go, and doing what you have to do, and seeing what you have to see, you'll dull and blunt the instrument you write with.",
+        "minimumQuantity": 100,
+        "availableQuantity": 10000,
+        "price": 5
+    },
+    {
+        "toolName": "Wrench",
+        "image": "https://i.ibb.co/K2fsV7R/wrench.jpg",
+        "description": "A determined soul will do more with a rusty monkey wrench than a loafer will accomplish with all the tools in a machine shop",
+        "minimumQuantity": 100,
+        "availableQuantity": 20000,
+        "price": 10
+    },
+    {
+        "toolName": "Screw Driver",
+        "image": "https://i.ibb.co/tcv66QW/skru.jpg",
+        "description": "Use a screwdriver instead of a hammer.when life gives you lemons.Using words to describe magic is like using a screwdriver to cut roast beef",
+        "minimumQuantity": 100,
+        "availableQuantity": 15000,
+        "price": 8
+    },
+    {
+        "toolName": "Paint Roller",
+        "image": "https://i.ibb.co/7VFHTQS/paintroller.jpg",
+        "description": "I think we're all born with this huge canvas in front of us and the paintbrushes and the paint, and we choose what to put on this canvas.",
+        "minimumQuantity": 100,
+        "availableQuantity": 13000,
+        "price": 9
+    },
+    {
+        "toolName": "Paint Brush",
+        "image": "https://i.ibb.co/YNNbSYC/paintbursh.jpg",
+        "description": "A joke is just a paintbrush.Your body is not your art - it's your paintbrush.I cannot remember a time when I was not interested in both gardening and painting",
+        "minimumQuantity": 100,
+        "availableQuantity": 16000,
+        "price": 12
+    },
+    {
+        "toolName": "Hacksaw",
+        "image": "https://i.ibb.co/1vx5bRx/heckshaw.jpg",
+        "description": "With the world so set on tearing itself apart, it don’t seem like such a bad thing to me to wanna put a little bit of it back together.",
+        "minimumQuantity": 100,
+        "availableQuantity": 17000,
+        "price": 6
+    }
+]
