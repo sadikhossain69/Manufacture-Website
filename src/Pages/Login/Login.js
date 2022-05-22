@@ -3,10 +3,18 @@ import { useForm } from 'react-hook-form';
 import login from '../../Media/Login/login.png'
 import { BsGoogle } from 'react-icons/bs'
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 
 const Login = () => {
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
+
+    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+
+    if(googleUser){
+        console.log(googleUser);
+    }
 
     const handleLogin = data => {
         console.log(data);
@@ -69,7 +77,7 @@ const Login = () => {
                                 <p className='mt-2'><small>new to manufacture house? <Link className='text-accent' to='/signUp' >Sign Up Here</Link></small></p>
                                 <div className="divider">OR</div>
                             </form>
-                            <button className="btn btn-accent text-white flex justify-center items-center">
+                            <button onClick={ () => signInWithGoogle() } className="btn btn-accent text-white flex justify-center items-center">
                                 <BsGoogle className='mr-2 text-xl' />
                                 <div>
                                     Continue With Google
