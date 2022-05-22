@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import login from '../../Media/Login/login.png'
 import { BsGoogle } from 'react-icons/bs'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import Loading from '../Shared/Loading/Loading';
@@ -21,15 +21,17 @@ const Login = () => {
         emailError,
       ] = useSignInWithEmailAndPassword(auth);
 
-      const navigate = useNavigate()
+    const navigate = useNavigate()
+    const location = useLocation()
+    let from = location.state?.from?.pathname || "/";
 
     useEffect(() => {
         if (googleUser || emailUser) {
             console.log(googleUser || emailUser);
             toast.success("Logged In Succesfully", { id: "logged iN succesfully" })
-            navigate('/')
+            navigate(from, { replace: true });
         }
-    }, [googleUser, emailUser, navigate])
+    }, [googleUser, emailUser, navigate, from])
 
     if (googleLoading || emailLoading) {
         return <Loading />

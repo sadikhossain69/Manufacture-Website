@@ -14,7 +14,7 @@ const Tool = ({ tool }) => {
                 <p className='font-semibold'>Available Quantity: {availableQuantity}</p>
                 <p className='font-semibold'>Price: ${price} (per qunatity)</p>
                 <div className="card-actions">
-                    <Link to={`/tools/${_id}`} className="bg-blue-600 hover:bg-blue-500 border-0 hover:duration-300 py-2 px-4 rounded text-white hover:scale-125">Buy Now</Link>
+                    <Link to={`/tools/${_id}`} className="bg-blue-600 hover:bg-blue-500 border-0 hover:duration-300 py-2 px-4 rounded text-white hover:scale-125">Purchase</Link>
                 </div>
             </div>
         </div>
