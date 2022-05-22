@@ -4,7 +4,7 @@ import login from '../../Media/Login/login.png'
 import { BsGoogle } from 'react-icons/bs'
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import Loading from '../Shared/Loading/Loading';
 import toast from 'react-hot-toast';
 
@@ -14,25 +14,36 @@ const Login = () => {
 
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
 
+    const [
+        signInWithEmailAndPassword,
+        emailUser,
+        emailLoading,
+        emailError,
+      ] = useSignInWithEmailAndPassword(auth);
+
     useEffect(() => {
-        if (googleUser) {
-            console.log(googleUser);
+        if (googleUser || emailUser) {
+            console.log(googleUser || emailUser);
             toast.success("Logged In Succesfully", { id: "logged iN succesfully" })
         }
-    }, [googleUser])
+    }, [googleUser, emailUser])
 
-    if (googleLoading) {
+    if (googleLoading || emailLoading) {
         return <Loading />
     }
 
-    if (googleError) {
-        toast.error(googleError.message, { id: 'error' })
+    if (googleError || emailError) {
+        toast.error(googleError?.message || emailError?.message, { id: 'error' })
     }
 
     const handleLogin = data => {
         console.log(data);
+        const email = data.email
+        const password = data.password
+        signInWithEmailAndPassword(email, password)
         reset()
     }
+
 
     return (
         <section>

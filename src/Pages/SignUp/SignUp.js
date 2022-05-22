@@ -1,15 +1,46 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { BsGoogle } from 'react-icons/bs'
 import { Link } from 'react-router-dom';
 import signUp from '../../Media/SignUp/signUp.png'
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import toast from 'react-hot-toast';
+import Loading from '../Shared/Loading/Loading';
 
 const SignUp = () => {
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
+    const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+
+    const [
+        createUserWithEmailAndPassword,
+        emailUser,
+        emailLoading,
+        emailError,
+    ] = useCreateUserWithEmailAndPassword(auth);
+
+    useEffect(() => {
+        if (googleUser || emailUser) {
+            console.log(googleUser || emailUser);
+            toast.success("Logged In Succesfully", { id: "logged iN succesfully" })
+        }
+    }, [googleUser, emailUser])
+
+    if (googleLoading || emailLoading) {
+        return <Loading />
+    }
+
+    if (googleError || emailError) {
+        toast.error(googleError?.message || emailError?.message, { id: 'error' })
+    }
+
     const handleLogin = data => {
         console.log(data);
+        const email = data.email
+        const password = data.password
+        createUserWithEmailAndPassword(email, password)
         reset()
     }
 
@@ -88,7 +119,7 @@ const SignUp = () => {
                                 <p className='mt-2'><small>Already Have an Account? <Link className='text-accent' to='/login' >Login Here</Link></small></p>
                                 <div className="divider">OR</div>
                             </form>
-                            <button className="btn btn-accent text-white flex justify-center items-center">
+                            <button onClick={ () => signInWithGoogle() } className="btn btn-accent text-white flex justify-center items-center">
                                 <BsGoogle className='mr-2 text-xl' />
                                 <div>
                                     Continue With Google
