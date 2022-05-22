@@ -19,7 +19,13 @@ const Navbar = () => {
                         <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             <li><Link to='/home' >Home</Link></li>
                             <li><Link to='/blogs' >Blogs</Link></li>
-                            <Link to='/login' className="btn btn-accent text-white">Login</Link>
+                            <li><Link to='/dashboard' >Dashboard</Link></li>
+                            {
+                                user ?
+                                    <button onClick={() => signOut(auth)} className="btn btn-accent text-white">Log Out</button>
+                                    :
+                                    <Link to='/login' className="btn btn-accent text-white">Login</Link>
+                            }
                         </ul>
                     </div>
                     <Link to='/' className="btn btn-ghost normal-case text-xl">Manufacture Shop</Link>
@@ -28,11 +34,12 @@ const Navbar = () => {
                     <ul className="menu menu-horizontal p-0 space-x-3">
                         <li><Link to='/home' >Home</Link></li>
                         <li><Link to='/blogs' >Blogs</Link></li>
+                        <li><Link to='/dashboard' >Dashboard</Link></li>
                         {
                             user ?
-                            <button onClick={ () => signOut(auth) } className="btn btn-accent text-white">Log Out</button>
-                            :
-                            <Link to='/login' className="btn btn-accent text-white">Login</Link>
+                                <button onClick={() => signOut(auth)} className="btn btn-accent text-white">Log Out</button>
+                                :
+                                <Link to='/login' className="btn btn-accent text-white">Login</Link>
                         }
                     </ul>
                 </div>
