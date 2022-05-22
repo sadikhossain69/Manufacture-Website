@@ -1,10 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import login from '../../Media/Login/login.png'
 import { BsGoogle } from 'react-icons/bs'
 import { Link } from 'react-router-dom';
+import signUp from '../../Media/SignUp/signUp.png'
 
-const Login = () => {
+const SignUp = () => {
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
@@ -15,13 +15,32 @@ const Login = () => {
 
     return (
         <section>
-            <h2 className="text-3xl text-center mt-3 underline underline-offset-8 text-accent decoration-accent">Login Here</h2>
+            <h2 className="text-3xl text-center mt-3 underline underline-offset-8 text-accent decoration-accent">Sign Up Here</h2>
             <div className="hero min-h-screen">
-                <div className="hero-content flex-col lg:flex-row-reverse">
-                    <img className='w-96 ml-9' src={login} alt="" />
+                <div className="hero-content flex-col lg:flex-row">
+                    <img className='w-96 ml-9' src={signUp} alt="" />
                     <div className="card flex-shrink-0 w-full lg:w-96 shadow-2xl bg-base-100">
                         <div className="card-body">
                             <form onSubmit={handleSubmit(handleLogin)}>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Name</span>
+                                    </label>
+                                    <input {...register('name', {
+                                        required: {
+                                            value: true,
+                                            message: "Name is Required"
+                                        },
+                                        minLength: {
+                                            value: 3,
+                                            message: "Must Have 3 Character or Longer"
+                                        }
+                                    })} type="text" placeholder="Enter Name" className="input input-bordered" />
+                                    <label className="label">
+                                        {errors.name?.type === 'required' && <p className="label-text-alt text-red-500">{errors.name.message}</p>}
+                                        {errors.name?.type === 'minLength' && <p className="label-text-alt text-red-500">{errors.name.message}</p>}
+                                    </label>
+                                </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Email</span>
@@ -66,7 +85,7 @@ const Login = () => {
                                 <div className="form-control mt-6">
                                     <button className="btn btn-primary">Login</button>
                                 </div>
-                                <p className='mt-2'><small>new to manufacture house? <Link className='text-accent' to='/signUp' >Sign Up Here</Link></small></p>
+                                <p className='mt-2'><small>Already Have an Account? <Link className='text-accent' to='/login' >Login Here</Link></small></p>
                                 <div className="divider">OR</div>
                             </form>
                             <button className="btn btn-accent text-white flex justify-center items-center">
@@ -83,4 +102,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SignUp;
