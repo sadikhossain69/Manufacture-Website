@@ -8,7 +8,11 @@ const ToolDetails = () => {
 
     const { id } = useParams()
 
-    const { data: toolDetail, isLoading, error, refetch } = useQuery('toolDetail', () => fetch(`http://localhost:5000/tools/${id}`).then(res => res.json()))
+    const { data: toolDetail, isLoading, error, refetch } = useQuery('toolDetail', () => fetch(`http://localhost:5000/tools/${id}`, {
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+    }).then(res => res.json()))
     
     if (isLoading) {
         return <Loading />
@@ -18,7 +22,7 @@ const ToolDetails = () => {
         toast.error(error, { id: 'error' })
     }
     
-    const { toolName, image, description, availableQuantity, price } = toolDetail
+    const { toolName, image, description, availableQuantity, minimumQuantity, price } = toolDetail
     
     console.log(toolDetail);
 
@@ -29,11 +33,9 @@ const ToolDetails = () => {
                 <div className="card-body">
                     <h2 className="card-title">{toolName}</h2> 
                     <p>{description}</p>
+                    <p className='font-semibold'>Minimum Order: {minimumQuantity}</p>
                     <p className='font-semibold'>Available Quantity: {availableQuantity}</p>
                     <p className='font-semibold'>Price: ${price} (per qunatity)</p>
-                    <div className="card-actions">
-                        <button className="bg-blue-600 hover:bg-blue-500 border-0 hover:duration-300 py-2 px-4 rounded text-white hover:scale-125">Order</button>
-                    </div>
                 </div>
             </div>
         </section>
