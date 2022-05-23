@@ -51,7 +51,37 @@ const ToolDetails = () => {
 
 
     const handleOrder = data => {
-        console.log(data);
+        // console.log(data);
+
+        const orderInfo = {
+            name: user.displayName,
+            email: user.email,
+            address: data.address,
+            phone: data.number,
+            quantity: data.quantity,
+            price: price,
+            toolName: toolName,
+        }
+        
+        fetch('http://localhost:5000/orders', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(orderInfo)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.success) {
+                toast.success(`Your Order is Done For ${toolName}`)
+                reset()
+            }
+            else{
+                toast.error(`Your Already Ordered ${toolName}`)
+            }
+        })
     }
 
     return (

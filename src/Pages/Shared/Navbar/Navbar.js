@@ -8,6 +8,11 @@ const Navbar = () => {
 
     const [user, loading, error] = useAuthState(auth);
 
+    const handleLogOut = () => {
+        signOut(auth)
+        localStorage.removeItem('accessToken')
+    }
+
     return (
         <header>
             <div className="navbar bg-base-100">
@@ -37,7 +42,7 @@ const Navbar = () => {
                         <li><Link to='/dashboard' >Dashboard</Link></li>
                         {
                             user ?
-                                <button onClick={() => signOut(auth)} className="btn btn-accent text-white">Log Out</button>
+                                <button onClick={handleLogOut} className="btn btn-accent text-white">Log Out</button>
                                 :
                                 <Link to='/login' className="btn btn-accent text-white">Login</Link>
                         }
