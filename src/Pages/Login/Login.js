@@ -7,6 +7,7 @@ import auth from '../../firebase.init';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import Loading from '../Shared/Loading/Loading';
 import toast from 'react-hot-toast';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
 
@@ -24,14 +25,15 @@ const Login = () => {
     const navigate = useNavigate()
     const location = useLocation()
     let from = location.state?.from?.pathname || "/";
+    
+    const [token] = useToken(googleUser || emailUser)
 
-    useEffect(() => {
-        if (googleUser || emailUser) {
-            console.log(googleUser || emailUser);
-            toast.success("Logged In Succesfully", { id: "logged iN succesfully" })
+    useEffect( () => {
+        if (token) {
+            toast.success("User Logged In", { id: 'Login' })
             navigate(from, { replace: true });
         }
-    }, [googleUser, emailUser, navigate, from])
+    }, [token, from, navigate] )
 
     if (googleLoading || emailLoading) {
         return <Loading />
