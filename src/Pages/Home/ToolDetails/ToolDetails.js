@@ -120,7 +120,7 @@ const ToolDetails = () => {
                         required: {
                             value: true
                         }
-                    })} onChange={handleQuantity} type="number" className="input input-bordered w-full md:w-1/3" placeholder='Your Quantity(minimum 100)' /><br />
+                    })} onChange={handleQuantity} type="number" className="input input-bordered w-full md:w-1/3" placeholder='Your Quantity(minimum 100)' defaultValue={minimumQuantity} /><br />
                     {quantityError && <p className="label-text-alt text-red-500">{quantityError}</p>}
                     {
                         !quantityError && <input className="bg-blue-600 hover:bg-blue-500 border-0 hover:duration-300 py-2 px-4 rounded text-white hover:scale-125 cursor-pointer" type="submit" value="Order" />

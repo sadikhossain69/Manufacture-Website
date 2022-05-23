@@ -3,10 +3,11 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import { MdDashboard } from 'react-icons/md'
 
 const Navbar = () => {
 
-    const [user, loading, error] = useAuthState(auth);
+    const [user] = useAuthState(auth);
 
     const handleLogOut = () => {
         signOut(auth)
@@ -24,7 +25,9 @@ const Navbar = () => {
                         <ul tabIndex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             <li><Link to='/home' >Home</Link></li>
                             <li><Link to='/blogs' >Blogs</Link></li>
-                            <li><Link to='/dashboard' >Dashboard</Link></li>
+                            {
+                                user && <li><Link to='/dashboard' >Dashboard</Link></li>
+                            }
                             {
                                 user ?
                                     <button onClick={() => signOut(auth)} className="btn btn-accent text-white">Log Out</button>
@@ -34,12 +37,15 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <Link to='/' className="btn btn-ghost normal-case text-xl">Manufacture Shop</Link>
+                    <label htmlFor="dashboardToggle" className=" drawer-button lg:hidden"><MdDashboard className='text-xl' /></label>
                 </div>
                 <div className="navbar-end hidden lg:flex">
                     <ul className="menu menu-horizontal p-0 space-x-3">
                         <li><Link to='/home' >Home</Link></li>
                         <li><Link to='/blogs' >Blogs</Link></li>
-                        <li><Link to='/dashboard' >Dashboard</Link></li>
+                        {
+                            user && <li><Link to='/dashboard' >Dashboard</Link></li>
+                        }
                         {
                             user ?
                                 <button onClick={handleLogOut} className="btn btn-accent text-white">Log Out</button>
