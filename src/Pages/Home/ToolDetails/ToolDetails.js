@@ -51,17 +51,17 @@ const ToolDetails = () => {
 
 
     const handleOrder = data => {
-        // console.log(data);
-
+        
         const orderInfo = {
             name: user.displayName,
             email: user.email,
             address: data.address,
             phone: data.number,
             quantity: data.quantity,
-            price: price,
+            price: price * data.quantity,
             toolName: toolName,
         }
+        console.log(orderInfo);
         
         fetch('http://localhost:5000/orders', {
             method: "POST",
