@@ -6,6 +6,7 @@ import AddReview from './Pages/Dashboard/AddReview/AddReview';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import MyOrders from './Pages/Dashboard/MyOrders/MyOrders';
 import MyProfile from './Pages/Dashboard/MyProfile/MyProfile';
+import UpdateProfile from './Pages/Dashboard/UpdateProfile/UpdateProfile';
 import Home from './Pages/Home/Home/Home';
 import ToolDetails from './Pages/Home/ToolDetails/ToolDetails';
 import Login from './Pages/Login/Login';
@@ -25,6 +26,7 @@ function App() {
           <Route index element={<MyProfile/>} />
           <Route path='myOrders' element={<MyOrders/>} />
           <Route path='addReview' element={<AddReview/>} />
+          <Route path='update_profile' element={<UpdateProfile/>} />
         </Route>
         <Route path='/tools/:id' element={
           <RequireAuth>
