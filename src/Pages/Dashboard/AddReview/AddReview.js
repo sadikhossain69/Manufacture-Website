@@ -1,17 +1,68 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import Loading from '../../Shared/Loading/Loading';
 
 const AddReview = () => {
 
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const [reviewLoading, setReviewLoading] = useState(null)
+    
+    if(reviewLoading) {
+        return <Loading/>
+    }
+
+    const imageStorageKey = '7da2b2086b902054d13e6c94a30f0b6a'
 
     const handleAddReview = data => {
-        console.log(data);
+        setReviewLoading(true)
+        const image = data.image[0]
+        const formData = new FormData()
+        formData.append('image', image)
+        const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.success) {
+                    const image = result.data.display_url
+                    const review = {
+                        name: data.name,
+                        image: image,
+                        rating: data.rating,
+                        description: data.description
+                    }
+
+
+                    fetch('http://localhost:5000/reviews', {
+                        method: "POST",
+                        headers: {
+                            'content-type': 'application/json',
+                            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                        },
+                        body: JSON.stringify(review)
+                    })
+                        .then(res => res.json())
+                        .then(added => {
+                            if (added.insertedId) {
+                                toast.success("Review Added", { id: "review added" })
+                            }
+                            else {
+                                toast.error("Failed to Added Review", { id: "failed to added review" })
+                            }
+                        })
+                }
+                console.log("result", result);
+                reset()
+                setReviewLoading(null)
+            })
     }
 
     return (
         <section>
-                <h2 className="text-3xl text-center font-semibold underline underline-offset-2 decoration-blue-600 text-blue-600">Plase Add A Review</h2>
+            <h2 className="text-3xl text-center font-semibold underline underline-offset-2 decoration-blue-600 text-blue-600">Plase Add A Review</h2>
             <div className='flex justify-center items-center mt-5'>
                 <form className='space-y-3' onSubmit={handleSubmit(handleAddReview)}>
                     <input {...register('name', {

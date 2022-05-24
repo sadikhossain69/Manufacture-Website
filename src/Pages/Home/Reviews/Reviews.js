@@ -1,52 +1,15 @@
 import React from 'react';
+import { useQuery } from 'react-query';
+import Loading from '../../Shared/Loading/Loading';
 import Review from '../Review/Review';
 
 const Reviews = () => {
 
-    const reviews = [
-        {
-            id: 1,
-            name: 'Captain Don',
-            img: `https://i.ibb.co/NZhsgdb/captain-Don.jpg`,
-            rating: '👌👌👌👌👌',
-            description: 'This is company is a very good company.I loved this company.I will order more item fromt this company in future'
-        },
-        {
-            id: 6,
-            name: 'Captain Don',
-            img: `https://i.ibb.co/NZhsgdb/captain-Don.jpg`,
-            rating: '👌👌👌👌👌',
-            description: 'This is company is a very good company.I loved this company.I will order more item fromt this company in future'
-        },
-        {
-            id: 2,
-            name: 'Captain Don',
-            img: `https://i.ibb.co/NZhsgdb/captain-Don.jpg`,
-            rating: '👌👌👌👌👌',
-            description: 'This is company is a very good company.I loved this company.I will order more item fromt this company in future'
-        },
-        {
-            id: 3,
-            name: 'Captain Don',
-            img: `https://i.ibb.co/NZhsgdb/captain-Don.jpg`,
-            rating: '👌👌👌👌👌',
-            description: 'This is company is a very good company.I loved this company.I will order more item fromt this company in future'
-        },
-        {
-            id: 4,
-            name: 'Captain Don',
-            img: `https://i.ibb.co/NZhsgdb/captain-Don.jpg`,
-            rating: '👌👌👌👌👌',
-            description: 'This is company is a very good company.I loved this company.I will order more item fromt this company in future'
-        },
-        {
-            id: 5,
-            name: 'Captain Don',
-            img: `https://i.ibb.co/NZhsgdb/captain-Don.jpg`,
-            rating: '👌👌👌👌👌',
-            description: 'This is company is a very good company.I loved this company.I will order more item fromt this company in future'
-        },
-    ]
+    const {data: reviews, isLoading, refetch} = useQuery('reviews', () => fetch('http://localhost:5000/reviews').then(res => res.json()))
+
+    if(isLoading){
+        return <Loading/>
+    }
 
     return (
         <section className='mt-10'>
@@ -56,7 +19,7 @@ const Reviews = () => {
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 text-center gap-5 px-3'>
                 {
                     reviews.map(review => <Review
-                        key={review.id}
+                        key={review._id}
                         review={review}
                     />)
                 }
