@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import MyOrder from '../MyOrder/MyOrder';
+import MyOrderDeletingModal from '../MyOrderDeletingModal/MyOrderDeletingModal';
 
 const MyOrders = () => {
 
     const [user] = useAuthState(auth)
-
+    const [deleteOrders, setDeleteOrders] = useState(null)
+ 
     // console.log(user.email);
 
     const url = `http://localhost:5000/orders?email=${user.email}`
@@ -54,11 +56,15 @@ const MyOrders = () => {
                                 index={index}
                                 data={d}
                                 refetch={refetch}
+                                setDeleteOrders={setDeleteOrders}
                             />)
                         }
                     </tbody>
                 </table>
             </div>
+            {
+                deleteOrders && <MyOrderDeletingModal deleteOrders={deleteOrders} refetch={refetch} setDeleteOrders={setDeleteOrders} />
+            }
         </section>
     );
 };
