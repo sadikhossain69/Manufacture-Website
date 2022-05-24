@@ -34,7 +34,7 @@ const MyProfile = () => {
                     <h2 className="text-lg">Linkedin: <span className='font-medium'>{profile.linkedin}</span></h2>
                     <button className='bg-green-600 text-white hover:bg-green-500 py-1 px-5 rounded duration-200 ease-in-out hover:scale-110'><Link to='/dashboard/update_profile'>Update Your Profile</Link></button>
                 </div>
-            </div>
+            </div> 
         </section>
     );
 };
