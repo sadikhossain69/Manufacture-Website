@@ -3,11 +3,10 @@ import { Link, Outlet } from 'react-router-dom';
 
 const Dashboard = () => {
     return (
-        <section>
+        <section className='my-3'>
             <div className="drawer drawer-mobile">
                 <input id="dashboardToggle" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
-                    <h2 className='text-3xl text-purple-500 font-semibold text-center my-2'>Welcome to Dashboard</h2>
                     <Outlet/>
                 </div>
                 <div className="drawer-side">

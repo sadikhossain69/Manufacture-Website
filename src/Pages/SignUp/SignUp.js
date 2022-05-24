@@ -7,6 +7,7 @@ import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-fi
 import auth from '../../firebase.init';
 import toast from 'react-hot-toast';
 import Loading from '../Shared/Loading/Loading';
+import useToken from '../../hooks/useToken';
 
 const SignUp = () => {
 
@@ -22,14 +23,15 @@ const SignUp = () => {
     ] = useCreateUserWithEmailAndPassword(auth);
 
     const navigate = useNavigate()
+    const [token] = useToken(googleUser || emailUser)
 
     useEffect(() => {
-        if (googleUser || emailUser) {
-            console.log(googleUser || emailUser);
+        if (token) {
+            console.log(token);
             toast.success("Logged In Succesfully", { id: "logged iN succesfully" })
             navigate('/')
         }
-    }, [googleUser, emailUser, navigate])
+    }, [token, navigate])
 
     if (googleLoading || emailLoading) {
         return <Loading />
@@ -122,7 +124,7 @@ const SignUp = () => {
                                 <p className='mt-2'><small>Already Have an Account? <Link className='text-accent' to='/login' >Login Here</Link></small></p>
                                 <div className="divider">OR</div>
                             </form>
-                            <button onClick={ () => signInWithGoogle() } className="btn btn-accent text-white flex justify-center items-center">
+                            <button onClick={() => signInWithGoogle()} className="btn btn-accent text-white flex justify-center items-center">
                                 <BsGoogle className='mr-2 text-xl' />
                                 <div>
                                     Continue With Google
