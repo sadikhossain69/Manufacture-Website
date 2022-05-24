@@ -1,10 +1,33 @@
 import React from 'react';
+import toast from 'react-hot-toast';
 
 const MyOrderDeletingModal = ({ deleteOrders, refetch, setDeleteOrders }) => {
 
     console.log(deleteOrders);
 
     const { toolName, _id, quantity, price } = deleteOrders
+
+    const handleOrderDelete = () => {
+        const url = `http://localhost:5000/orders/${_id}`
+        fetch(url, {
+            method: "DELETE",
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.deletedCount) {
+                toast.success('Order Canceled Successful', {id: 'order cancel'})
+                setDeleteOrders(null)
+                refetch()
+            }
+            else{
+                toast.error("Failed to Cancel Order", {id: "failed"})
+            }
+        })
+    }
 
     return (
         <div>
@@ -19,7 +42,7 @@ const MyOrderDeletingModal = ({ deleteOrders, refetch, setDeleteOrders }) => {
                         <p>Price: {price}</p>
                     </div>
                     <div className='text-center md:text-right mt-2 space-x-2'>
-                        <button className="bg-red-600 text-white  py-1 px-5 rounded hover:bg-red-500 hover:duration-300 cursor-pointer border-0">Delete</button>
+                        <button onClick={handleOrderDelete} className="bg-red-600 text-white  py-1 px-5 rounded hover:bg-red-500 hover:duration-300 cursor-pointer border-0">Delete</button>
                         <label htmlFor="my-order-deleting-modal" className="bg-green-600 text-white  py-1 px-5 rounded hover:bg-green-500 hover:duration-300 cursor-pointer">Cancel</label>
                     </div>
                 </div>
