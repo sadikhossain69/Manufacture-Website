@@ -6,6 +6,7 @@ import RequireAuth from './hooks/RequireAuth';
 import AddReview from './Pages/Dashboard/AddReview/AddReview';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
+import ManageProducts from './Pages/Dashboard/ManageProducts/ManageProducts';
 import MyOrders from './Pages/Dashboard/MyOrders/MyOrders';
 import MyProfile from './Pages/Dashboard/MyProfile/MyProfile';
 import UpdateProfile from './Pages/Dashboard/UpdateProfile/UpdateProfile';
@@ -30,6 +31,7 @@ function App() {
           <Route path='addReview' element={<AddReview/>} />
           <Route path='update_profile' element={<UpdateProfile/>} />
           <Route path='make_admin' element={<RequireAdmin><MakeAdmin/></RequireAdmin>} />
+          <Route path='manage_products' element={<RequireAdmin><ManageProducts/></RequireAdmin>} />
         </Route>
         <Route path='/tools/:id' element={
           <RequireAuth>
