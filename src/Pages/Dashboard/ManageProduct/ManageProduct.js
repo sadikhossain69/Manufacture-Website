@@ -1,16 +1,16 @@
 import React from 'react';
 
-const ManageProduct = ({ tool, refetch, index }) => {
+const ManageProduct = ({ tool, refetch, index, setToolDelete }) => {
 
     const { toolName, image } = tool
 
     return (
-            <tr className="hover">
-                <th>{index + 1}</th>
-                <td><img className='w-20 ring-1 rounded' src={image} alt="" /></td>
-                <td>{toolName}</td>
-                <td><button className="py-1 px-5 rounded ease-in-out duration-300 hover:scale-125 bg-red-600 text-white hover:bg-red-500 border-0">Delete</button></td>
-            </tr>
+        <tr className="hover">
+            <th>{index + 1}</th>
+            <td><img className='w-20 ring-1 rounded' src={image} alt="" /></td>
+            <td>{toolName}</td>
+            <td><label onClick={() => setToolDelete(tool)} htmlFor="my-modal-3" className="bg-red-600 text-white py-1 px-4 duration-300 cursor-pointer hover:bg-red-500 rounded font-semibold hover:scale-110 ease-in-out">Delete</label></td>
+        </tr>
     );
 };
 

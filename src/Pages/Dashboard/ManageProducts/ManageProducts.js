@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../../Shared/Loading/Loading';
 import ManageProduct from '../ManageProduct/ManageProduct';
+import ToolsDeletingModal from '../ToolsDeletingModal/ToolsDeletingModal';
 
 const ManageProducts = () => {
 
     const {data: tools, isLoading, refetch} = useQuery('tools', () => fetch('http://localhost:5000/tools').then(res => res.json()))
+    const [toolDelete, setToolDelete] = useState(null)
 
     if(isLoading) {
         return <Loading/>
@@ -31,11 +33,15 @@ const ManageProducts = () => {
                                 tool={tool}
                                 index={index}
                                 refetch={refetch}
+                                setToolDelete={setToolDelete}
                             />)
                         }
                     </tbody>
                 </table>
             </div>
+            {
+                toolDelete && <ToolsDeletingModal toolDelete={toolDelete} setToolDelete={setToolDelete} refetch={refetch} />
+            }
         </section>
     );
 };
