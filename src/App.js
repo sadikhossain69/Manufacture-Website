@@ -1,6 +1,7 @@
 import { Toaster } from 'react-hot-toast';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import RequireAdmin from './hooks/RequireAdmin';
 import RequireAuth from './hooks/RequireAuth';
 import AddReview from './Pages/Dashboard/AddReview/AddReview';
 import Dashboard from './Pages/Dashboard/Dashboard';
@@ -28,7 +29,7 @@ function App() {
           <Route path='myOrders' element={<MyOrders/>} />
           <Route path='addReview' element={<AddReview/>} />
           <Route path='update_profile' element={<UpdateProfile/>} />
-          <Route path='make_admin' element={<MakeAdmin/>} />
+          <Route path='make_admin' element={<RequireAdmin><MakeAdmin/></RequireAdmin>} />
         </Route>
         <Route path='/tools/:id' element={
           <RequireAuth>
