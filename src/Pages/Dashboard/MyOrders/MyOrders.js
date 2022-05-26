@@ -11,7 +11,6 @@ const MyOrders = () => {
     const [user] = useAuthState(auth)
     const [deleteOrders, setDeleteOrders] = useState(null)
  
-    // console.log(user.email);
 
     const url = `http://localhost:5000/orders?email=${user.email}`
 

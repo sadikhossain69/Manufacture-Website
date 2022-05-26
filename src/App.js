@@ -10,6 +10,7 @@ import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
 import ManageProducts from './Pages/Dashboard/ManageProducts/ManageProducts';
 import MyOrders from './Pages/Dashboard/MyOrders/MyOrders';
 import MyProfile from './Pages/Dashboard/MyProfile/MyProfile';
+import Payment from './Pages/Dashboard/Payment/Payment';
 import UpdateProfile from './Pages/Dashboard/UpdateProfile/UpdateProfile';
 import Home from './Pages/Home/Home/Home';
 import ToolDetails from './Pages/Home/ToolDetails/ToolDetails';
@@ -32,6 +33,7 @@ function App() {
           <Route path='myOrders' element={<MyOrders/>} />
           <Route path='addReview' element={<AddReview/>} />
           <Route path='update_profile' element={<UpdateProfile/>} />
+          <Route path='payment/:id' element={<Payment/>} />
           <Route path='make_admin' element={<RequireAdmin><MakeAdmin/></RequireAdmin>} />
           <Route path='manage_products' element={<RequireAdmin><ManageProducts/></RequireAdmin>} />
           <Route path='add_a_product' element={<RequireAdmin><AddTools/></RequireAdmin>} />
