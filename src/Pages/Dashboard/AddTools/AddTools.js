@@ -37,7 +37,7 @@ const AddTools = () => {
                         image: image,
                         description: data.description
                     }
-                    fetch('http://localhost:5000/tools', {
+                    fetch('https://peaceful-caverns-76279.herokuapp.com/tools', {
                         method: "POST",
                         headers: {
                             'content-type': 'application/json',

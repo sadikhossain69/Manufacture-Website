@@ -32,7 +32,7 @@ const UpdateProfile = () => {
                         address: data.address,
                         linkedin: data.linkedin
                     }
-                    fetch(`http://localhost:5000/profile_update/${user.email}`, {
+                    fetch(`https://peaceful-caverns-76279.herokuapp.com/profile_update/${user.email}`, {
                         method: "PUT",
                         headers: {
                             'content-type': 'application/json',

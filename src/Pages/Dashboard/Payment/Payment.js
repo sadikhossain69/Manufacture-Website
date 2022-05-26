@@ -10,7 +10,7 @@ const Payment = () => {
 
     const { id } = useParams()
 
-    const url = `http://localhost:5000/orders/${id}`
+    const url = `https://peaceful-caverns-76279.herokuapp.com/orders/${id}`
 
     const stripePromise = loadStripe('pk_test_51L0q9uHZj0Xrm17hnHQItw0oVuscyz2DwBUiDjqiUKVWHKdzuiIAwGEXpp4p0P1w8yJxu6oxgvBT9yTrQWILHfCQ00K5BuLSky');
 

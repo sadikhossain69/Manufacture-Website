@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import RequireAdmin from './hooks/RequireAdmin';
 import RequireAuth from './hooks/RequireAuth';
+import Blogs from './Pages/Blogs/Blogs';
 import AddReview from './Pages/Dashboard/AddReview/AddReview';
 import AddTools from './Pages/Dashboard/AddTools/AddTools';
 import Dashboard from './Pages/Dashboard/Dashboard';
@@ -29,6 +30,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/home' element={<Home />} />
+        <Route path='/blogs' element={<Blogs />} />
         <Route path='/dashboard' element={<RequireAuth><Dashboard/></RequireAuth>} >
           <Route index element={<MyProfile/>} />
           <Route path='myOrders' element={<MyOrders/>} />

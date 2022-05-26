@@ -14,7 +14,7 @@ const ToolDetails = () => {
     const [user] = useAuthState(auth);
     const [quantityError, setQuantityError] = useState(null)
 
-    const { data: toolDetail, isLoading, error, refetch } = useQuery('toolDetail', () => fetch(`http://localhost:5000/tools/${id}`, {
+    const { data: toolDetail, isLoading, error, refetch } = useQuery('toolDetail', () => fetch(`https://peaceful-caverns-76279.herokuapp.com/tools/${id}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -63,7 +63,7 @@ const ToolDetails = () => {
         }
         console.log(orderInfo);
         
-        fetch('http://localhost:5000/orders', {
+        fetch('https://peaceful-caverns-76279.herokuapp.com/orders', {
             method: "POST",
             headers: {
                 'content-type': 'application/json',

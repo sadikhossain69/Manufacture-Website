@@ -8,7 +8,7 @@ const MyOrderDeletingModal = ({ deleteOrders, refetch, setDeleteOrders }) => {
     const { toolName, _id, quantity, price } = deleteOrders
 
     const handleOrderDelete = () => {
-        const url = `http://localhost:5000/orders/${_id}`
+        const url = `https://peaceful-caverns-76279.herokuapp.com/orders/${_id}`
         fetch(url, {
             method: "DELETE",
             headers: {

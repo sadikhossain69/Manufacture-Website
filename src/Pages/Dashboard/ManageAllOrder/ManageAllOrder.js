@@ -5,7 +5,7 @@ const ManageAllOrder = ({ order, index, refetch }) => {
     const { name, toolName, quantity, email, price, paid, adminAccept, _id } = order
 
     const handlePending = () => {
-        fetch(`http://localhost:5000/admin/orders/${_id}`, {
+        fetch(`https://peaceful-caverns-76279.herokuapp.com/admin/orders/${_id}`, {
             method: "PATCH",
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,

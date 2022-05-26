@@ -12,7 +12,7 @@ const MyOrders = () => {
     const [deleteOrders, setDeleteOrders] = useState(null)
  
 
-    const url = `http://localhost:5000/orders?email=${user.email}`
+    const url = `https://peaceful-caverns-76279.herokuapp.com/orders?email=${user.email}`
 
     const { data, isLoading, error, refetch } = useQuery('myOrders', () => fetch(url, {
         method: "GET",

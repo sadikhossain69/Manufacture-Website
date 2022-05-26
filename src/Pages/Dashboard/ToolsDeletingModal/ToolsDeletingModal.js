@@ -7,7 +7,7 @@ const ToolsDeletingModal = ({ toolDelete, setToolDelete, refetch }) => {
     console.log(id);
 
     const handleToolDelete = () => {
-        const url = `http://localhost:5000/tools/${id}`
+        const url = `https://peaceful-caverns-76279.herokuapp.com/tools/${id}`
         fetch(url, {
             method: "DELETE",
             headers: {

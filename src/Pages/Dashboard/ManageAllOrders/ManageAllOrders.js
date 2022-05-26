@@ -5,7 +5,7 @@ import ManageAllOrder from '../ManageAllOrder/ManageAllOrder';
 
 const ManageAllOrders = () => {
 
-    const {data: orders, isLoading, refetch} = useQuery('orders', () => fetch('http://localhost:5000/admin/orders', {
+    const {data: orders, isLoading, refetch} = useQuery('orders', () => fetch('https://peaceful-caverns-76279.herokuapp.com/admin/orders', {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }

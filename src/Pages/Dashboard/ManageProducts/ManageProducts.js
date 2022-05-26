@@ -6,7 +6,7 @@ import ToolsDeletingModal from '../ToolsDeletingModal/ToolsDeletingModal';
 
 const ManageProducts = () => {
 
-    const {data: tools, isLoading, refetch} = useQuery('tools', () => fetch('http://localhost:5000/tools').then(res => res.json()))
+    const {data: tools, isLoading, refetch} = useQuery('tools', () => fetch('https://peaceful-caverns-76279.herokuapp.com/tools').then(res => res.json()))
     const [toolDelete, setToolDelete] = useState(null)
 
     if(isLoading) {

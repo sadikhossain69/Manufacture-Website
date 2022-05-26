@@ -15,7 +15,7 @@ const CheckoutForm = ({ order }) => {
     const { price, _id, toolName, email, name } = order
 
     useEffect(() => {
-        fetch(`http://localhost:5000/create-payment-intent`, {
+        fetch(`https://peaceful-caverns-76279.herokuapp.com/create-payment-intent`, {
             method: "POST",
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`,
@@ -93,7 +93,7 @@ const CheckoutForm = ({ order }) => {
                 transactionId: paymentIntent.id,
             }
 
-            fetch(`http://localhost:5000/orders/${_id}`, {
+            fetch(`https://peaceful-caverns-76279.herokuapp.com/orders/${_id}`, {
                 method: "PATCH",
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`,

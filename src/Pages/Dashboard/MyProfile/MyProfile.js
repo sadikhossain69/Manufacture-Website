@@ -9,7 +9,7 @@ const MyProfile = () => {
     const [profile, setProfile] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/profile/${user.email}`, {
+        fetch(`https://peaceful-caverns-76279.herokuapp.com/profile/${user.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }
