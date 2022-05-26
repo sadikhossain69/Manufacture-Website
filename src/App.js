@@ -7,6 +7,7 @@ import AddReview from './Pages/Dashboard/AddReview/AddReview';
 import AddTools from './Pages/Dashboard/AddTools/AddTools';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
+import ManageAllOrders from './Pages/Dashboard/ManageAllOrders/ManageAllOrders';
 import ManageProducts from './Pages/Dashboard/ManageProducts/ManageProducts';
 import MyOrders from './Pages/Dashboard/MyOrders/MyOrders';
 import MyProfile from './Pages/Dashboard/MyProfile/MyProfile';
@@ -37,6 +38,7 @@ function App() {
           <Route path='make_admin' element={<RequireAdmin><MakeAdmin/></RequireAdmin>} />
           <Route path='manage_products' element={<RequireAdmin><ManageProducts/></RequireAdmin>} />
           <Route path='add_a_product' element={<RequireAdmin><AddTools/></RequireAdmin>} />
+          <Route path='manage_all_order' element={<RequireAdmin><ManageAllOrders/></RequireAdmin>} />
         </Route>
         <Route path='/tools/:id' element={
           <RequireAuth>
