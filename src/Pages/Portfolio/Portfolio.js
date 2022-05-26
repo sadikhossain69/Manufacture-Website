@@ -64,7 +64,7 @@ const Portfolio = () => {
                                 <p className='text-lg'>React</p>
                             </div>
                             <div>
-                                <SiExpress className='text-5xl' />
+                                <GrNode className='text-5xl' />
                                 <p className='text-lg'>Node</p>
                             </div>
                         </div>
@@ -76,44 +76,46 @@ const Portfolio = () => {
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-5'>
                 <div className="card w-full bg-base-100 shadow-xl">
-                    <figure><img className='w-full' src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" /></figure>
+                    <figure><a target='_blank' href="https://dream-electronics-5bda0.web.app/"><img className='w-full' src="https://s.tmimgcdn.com/scr/1200x750/52500/free-responsive-corporate-template-website-template_52524-0-original.jpg" alt="Shoes" /></a></figure>
                     <div className="card-body">
-                        <h2 className="card-title">
-                            Shoes!
-                            <div className="badge badge-secondary">NEW</div>
-                        </h2>
+                        <a target='_blank' href='https://dream-electronics-5bda0.web.app/' className="card-title">
+                            Dream Electronics
+                        </a>
                         <p>If a dog chews shoes whose shoes does he choose?</p>
                         <div className="card-actions justify-end">
-                            <div className="badge badge-outline">Fashion</div>
-                            <div className="badge badge-outline">Products</div>
+                            <div className="badge badge-outline">React</div>
+                            <div className="badge badge-outline">Node</div>
                         </div>
                     </div>
                 </div>
                 <div className="card w-full md: bg-base-100 shadow-xl">
-                    <figure><img className='w-full' src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" /></figure>
+                    <figure><a target='_blank' href="https://genius-car-store-3c868.web.app/"><img className='w-full' src="https://freshdesignweb.com/wp-content/uploads/Free-Business-Website-Templates.jpg" alt="Shoes" /></a></figure>
                     <div className="card-body">
-                        <h2 className="card-title">
-                            Shoes!
-                            <div className="badge badge-secondary">NEW</div>
-                        </h2>
+                        <a target='_blank' href="https://genius-car-store-3c868.web.app/">
+                            <h2 className="card-title">
+                                Genius Car Service
+
+                            </h2>
+                        </a>
                         <p>If a dog chews shoes whose shoes does he choose?</p>
                         <div className="card-actions justify-end">
-                            <div className="badge badge-outline">Fashion</div>
-                            <div className="badge badge-outline">Products</div>
+                            <div className="badge badge-outline">Firebase</div>
+                            <div className="badge badge-outline">React</div>
                         </div>
                     </div>
                 </div>
                 <div className="card w-full md: bg-base-100 shadow-xl">
-                    <figure><img className='w-full' src="https://api.lorem.space/image/shoes?w=400&h=225" alt="Shoes" /></figure>
+                    <figure><a target='_blank' href="https://jovial-jalebi-f6b4d5.netlify.app/"><img className='w-full' src="https://themewagon.com/wp-content/uploads/2019/08/fox-1.jpg" alt="Shoes" /></a></figure>
                     <div className="card-body">
-                        <h2 className="card-title">
-                            Shoes!
-                            <div className="badge badge-secondary">NEW</div>
-                        </h2>
+                        <a href="https://jovial-jalebi-f6b4d5.netlify.app/" target='_blank'>
+                            <h2 className="card-title">
+                                Word Counter!
+                            </h2>
+                        </a>
                         <p>If a dog chews shoes whose shoes does he choose?</p>
                         <div className="card-actions justify-end">
-                            <div className="badge badge-outline">Fashion</div>
-                            <div className="badge badge-outline">Products</div>
+                            <div className="badge badge-outline">Html</div>
+                            <div className="badge badge-outline">Javascript</div>
                         </div>
                     </div>
                 </div>
