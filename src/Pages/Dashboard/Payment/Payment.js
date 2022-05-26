@@ -24,7 +24,6 @@ const Payment = () => {
         return <Loading />
     }
 
-    console.log(order);
 
     return (
         <section>
@@ -42,7 +41,7 @@ const Payment = () => {
                 <div className="card max-w-md shadow-2xl bg-base-100 mx-auto">
                     <div className="card-body">
                         <Elements stripe={stripePromise}>
-                            <CheckoutForm />
+                            <CheckoutForm order={order} />
                         </Elements>
                     </div>
                 </div>
