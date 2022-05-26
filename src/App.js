@@ -14,6 +14,7 @@ import UpdateProfile from './Pages/Dashboard/UpdateProfile/UpdateProfile';
 import Home from './Pages/Home/Home/Home';
 import ToolDetails from './Pages/Home/ToolDetails/ToolDetails';
 import Login from './Pages/Login/Login';
+import Portfolio from './Pages/Portfolio/Portfolio';
 import Footer from './Pages/Shared/Footer/Footer';
 import Navbar from './Pages/Shared/Navbar/Navbar';
 import PageNotFound from './Pages/Shared/PageNotFound/PageNotFound';
@@ -42,6 +43,7 @@ function App() {
         } />
         <Route path='/login' element={<Login />} />
         <Route path='/signUp' element={<SignUp />} />
+        <Route path='/portfolio' element={<Portfolio />} />
         <Route path='*' element={<PageNotFound />} />
       </Routes>
       <Footer />
