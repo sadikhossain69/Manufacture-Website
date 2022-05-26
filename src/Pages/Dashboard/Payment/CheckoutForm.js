@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import Loading from '../../Shared/Loading/Loading';
 
-const CheckoutForm = ({order}) => {
+const CheckoutForm = ({ order }) => {
 
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('')
     const [clientSecret, setClientSecret] = useState('')
+    const [processing, setProcessing] = useState(false)
+    const [success, setSuccess] = useState('')
+    const [transactionId, setTransactionId] = useState('')
 
-    const {price, _id, toolName, email, name, quantity} = order
+    const { price, _id, toolName, email, name } = order
 
     useEffect(() => {
         fetch(`http://localhost:5000/create-payment-intent`, {
@@ -27,6 +31,10 @@ const CheckoutForm = ({order}) => {
                 }
             })
     }, [price])
+
+    if (processing) {
+        return <Loading />
+    }
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -52,6 +60,34 @@ const CheckoutForm = ({order}) => {
             setCardError(error.message)
         } else {
             setCardError('')
+        }
+
+        setSuccess('')
+        // setProcessing(true)
+
+
+        const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
+            clientSecret,
+            {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: name,
+                        email: email,
+                    },
+                },
+            },
+        );
+        if (intentError) {
+            setCardError(intentError?.message)
+            // setProcessing(false)
+        }
+        else {
+            setCardError('')
+            console.log(paymentIntent)
+            setTransactionId(paymentIntent.id)
+            // setProcessing(false)
+            setSuccess('Congratulation! Your Payment Is completed')
         }
 
     }
@@ -82,6 +118,12 @@ const CheckoutForm = ({order}) => {
                 </form>
                 {
                     cardError && <p className='text-red-600'>{cardError}</p>
+                }
+                {
+                    success && <div className='text-green-600'>
+                        <p>{success}</p>
+                        <p>Your Transaction Id is: {transactionId}</p>
+                    </div>
                 }
             </div>
         </>
